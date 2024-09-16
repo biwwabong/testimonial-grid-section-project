@@ -1,0 +1,239 @@
+/* ================== CSS Reset ================== */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font: inherit;
+  color: inherit;
+}
+
+/* ================== Global Variables ================== */
+:root {
+  /* Colors */
+  --Moderate-violet: hsl(263, 55%, 52%);
+  --Lighter-violet: hsl(263, 79%, 70%);
+  --Very-dark-grayish-blue: hsl(217, 19%, 35%);
+  --Very-dark-blackish-blue: hsl(219, 29%, 14%);
+  --White: hsl(0, 0%, 100%);
+  --Light-grayish-blue: hsl(210, 46%, 95%);
+
+  /* Opacities */
+  --Very-dark-grayish-blue-50: hsla(217, 19%, 35%, 0.5);
+  --Very-dark-grayish-blue-70: hsla(217, 19%, 35%, 0.7);
+  --White-50: hsla(0, 0%, 100%, 0.5);
+  --White-70: hsla(0, 0%, 100%, 0.7);
+
+  /* Typography */
+  --font-family: "Barlow Semi Condensed", sans-serif;
+  --font-size-base: 1rem;
+  --font-size-bold-text: 2rem;
+  --font-weight-500: 500;
+  --font-weight-600: 600;
+
+  /* Spacing */
+  --spacing-x-small: 0.3rem;
+  --spacing-small: 1.4rem;
+  --spacing-medium: 2.5rem;
+  --spacing-large: 3rem;
+  --spacing-x-large: 4rem;
+
+  /* Other */
+  --border-radius-standard: 1rem;
+}
+
+/* ================== Global Styles ================== */
+html {
+  font-size: 81.25%;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-500);
+  background-color: var(--Light-grayish-blue);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+h3,
+p {
+  color: var(--White);
+}
+
+h3 {
+  font-weight: var(--font-weight-500);
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: var(--font-weight-500);
+}
+
+/* ================== BEM for Testimonials ================== */
+.testimonial {
+  position: relative;
+  background-color: var(--Moderate-violet);
+  margin: var(--spacing-medium);
+  padding: var(--spacing-large) var(--spacing-x-large);
+  border-radius: var(--border-radius-standard);
+  z-index: 0;
+  overflow: hidden;
+  color: var(--White);
+}
+
+.testimonial__header {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-medium);
+  margin-bottom: var(--spacing-small);
+}
+
+.testimonial__profile-image {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.testimonial__profile-image--border {
+  border: 4px solid var(--Lighter-violet);
+}
+
+.testimonial__details {
+  display: flex;
+  flex-direction: column;
+}
+
+.testimonial__name {
+  padding-bottom: var(--spacing-x-small);
+  font-weight: var(--font-weight-500);
+  font-size: 1.5rem;
+}
+
+.testimonial__quote-marks {
+  position: absolute;
+  top: 0;
+  right: var(--spacing-large);
+  width: 166px;
+  z-index: 1;
+}
+
+.testimonial__status {
+  font-weight: var(--font-weight-500);
+  font-size: 1.3rem;
+  color: var(--White-50);
+}
+
+.testimonial__text {
+  position: relative;
+  z-index: 2;
+}
+
+.testimonial__text p {
+  font-size: 1.5rem;
+  line-height: 2.4rem;
+  font-weight: var(--font-weight-500);
+  color: var(--White-70);
+}
+
+.testimonial__bold-text {
+  display: block;
+  margin-bottom: var(--spacing-small);
+  font-size: 2.5rem;
+  line-height: 3rem;
+  font-weight: var(--font-weight-600);
+  color: var(--White);
+}
+
+/* ================== Modifiers for Specific Cards ================== */
+.testimonial--moderate-violet {
+  background-color: var(--Moderate-violet);
+}
+
+.testimonial--very-dark-grayish-blue {
+  background-color: var(--Very-dark-grayish-blue);
+}
+
+.testimonial--very-dark-blackish-blue {
+  background-color: var(--Very-dark-blackish-blue);
+}
+
+/* Modifiers for light background and dark text */
+.testimonial--light {
+  background-color: var(--White);
+  color: var(--Very-dark-grayish-blue);
+}
+
+.testimonial--light .testimonial__name {
+  color: var(--Very-dark-grayish-blue);
+  font-weight: var(--font-weight-600);
+}
+
+.testimonial--light .testimonial__status {
+  color: var(--Very-dark-grayish-blue-50);
+  font-weight: var(--font-weight-500);
+}
+
+.testimonial--light .testimonial__text p {
+  color: var(--Very-dark-grayish-blue-70);
+}
+
+.testimonial--light .testimonial__bold-text {
+  color: var(--Very-dark-grayish-blue);
+}
+
+/* ================== Desktop Grid Layout ================== */
+@media (min-width: 90em) {
+  /* 1440px converted to em */
+  .testimonial__container {
+    max-width: 160rem;
+    margin: 0 auto; /* Center the container horizontally */
+    transform: scale(0.7);
+    transform-origin: center;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(12.5rem, 1fr));
+    grid-template-rows: repeat(2, auto);
+    padding: var(--spacing-x-small);
+  }
+  .testimonial {
+    margin: 2rem;
+  }
+
+  /* Card 1: Row 1, Columns 1 and 2 */
+  .testimonial:nth-child(1) {
+    grid-column: 1 / span 2;
+    grid-row: 1;
+  }
+
+  /* Card 2: Row 1, Column 3 */
+  .testimonial:nth-child(2) {
+    grid-column: 3 / 4;
+    grid-row: 1;
+  }
+
+  /* Card 3: Row 2, Column 1 */
+  .testimonial:nth-child(3) {
+    grid-column: 1 / 2;
+    grid-row: 2;
+  }
+
+  /* Card 4: Row 2, Columns 2 and 3 */
+  .testimonial:nth-child(4) {
+    grid-column: 2 / span 2;
+    grid-row: 2;
+  }
+
+  /* Card 5: Row 1 and 2, Column 4 */
+  .testimonial:nth-child(5) {
+    grid-column: 4;
+    grid-row: 1 / span 2;
+  }
+}
